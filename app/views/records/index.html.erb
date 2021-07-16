@@ -1,0 +1,49 @@
+
+
+
+<div class="row">
+  <div class="col-sm-6">
+    <h1>Records</h1>
+  </div>
+
+  <div class="col-sm-6 text-right">
+  <%= link_to new_record_path, class: 'btn btn-primary' do %>
+    Add New Record
+  <% end %>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+    
+
+            <th>Title</th>
+            <th>Year</th>
+            <th>User</th>
+            <th>Artist</th>
+            
+          <th></th>
+        
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @records.each do |record| %>
+        <%= content_tag :tr, id: dom_id(record), class: dom_class(record) do %>
+          
+
+                      <td><%= record.title %></td>
+                      <td><%= record.year %></td>
+                      <td><%= record.user %></td>
+                      <td><%= record.artist %></td>
+          
+          
+            <td><%= link_to 'Show', record %></td>
+          
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,16 @@
+<div class="page-header">
+  <%= link_to artists_path, class: 'btn btn-default' do %>
+    All Artists
+  <% end %>
+  <%= link_to edit_artist_path(@artist), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+  <h1>Show artist</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @artist.name %></dd>
+  <dt>User:</dt>
+  <dd><%= @artist.user %></dd>
+</dl>

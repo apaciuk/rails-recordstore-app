@@ -1,0 +1,20 @@
+<div class="page-header">
+  <%= link_to records_path, class: 'btn btn-default' do %>
+    All Records
+  <% end %>
+  <%= link_to edit_record_path(@record), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+  <h1>Show record</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Title:</dt>
+  <dd><%= @record.title %></dd>
+  <dt>Year:</dt>
+  <dd><%= @record.year %></dd>
+  <dt>User:</dt>
+  <dd><%= @record.user %></dd>
+  <dt>Artist:</dt>
+  <dd><%= @record.artist %></dd>
+</dl>
