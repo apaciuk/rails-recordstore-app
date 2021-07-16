@@ -1,9 +1,10 @@
 class RecordsController < ApplicationController
+  before_action :authorize_access_request!
   before_action :set_record, only: %i[ show edit update destroy ]
 
   # GET /records or /records.json
   def index
-    @records = Record.all
+    @records = current_user.records.all
   end
 
   # GET /records/1 or /records/1.json
@@ -21,7 +22,7 @@ class RecordsController < ApplicationController
 
   # POST /records or /records.json
   def create
-    @record = Record.new(record_params)
+    @record = current_user.records.build(record_params)
 
     respond_to do |format|
       if @record.save
@@ -59,11 +60,11 @@ class RecordsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_record
-      @record = Record.find(params[:id])
+      @record = current_user.records.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def record_params
-      params.require(:record).permit(:title, :year, :user_id, :artist_id)
+      params.require(:record).permit(:title, :year, :artist_id)
     end
 end
